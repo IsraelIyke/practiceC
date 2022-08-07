@@ -1,11 +1,9 @@
 #include "main.h"
 
 /**
- * print_char - writes the character c to stdout
- * @args: argument
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * specs_c - ouput single character
+ * @args: variadic args
+ * Return: variadic args
  */
 int specs_c(va_list args)
 {
@@ -14,9 +12,9 @@ int specs_c(va_list args)
 
 
 /**
- * print_str - prints a string with a `s` (lower case) specifier
- * @args: argument
- * Return: number of character printed
+ * specs_s - output multi_character/strings
+ * @args: variadic args
+ * Return: variadic args
  */
 
 int specs_s(va_list args)
@@ -36,8 +34,8 @@ return (k);
 }
 
 /**
- * print_int - prints an integer.
- * @args: argument
+ * specs_d - outputs numbers/integers
+ * @args: variadic args
  * Return: 0
  */
 
@@ -68,8 +66,8 @@ return (c_out);
 
 
 /**
- * print_unsigned - prints an unsigned int.
- * @args: argument
+ * specs_u - outputs variable without negative sign
+ * @args: variadic args
  * Return: 0
  */
 
@@ -91,10 +89,10 @@ return (k + 1);
 
 
 /**
- * print_hex_base - base function for printing hexadecimal numbers
- * @args: argument list containing hexadecimal
- * @s: a  in caps on lower, printing the hex number in caps in lower
- * Return: number of digits printed
+ * specs_hex - handles bases for hex
+ * @args: variadic args
+ * @s: argument
+ * Return: output
  */
 
 int specs_hex(va_list args, char s)

@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * struct specs_id - structure definition of a printTypeStruct
- * @spec: type
- * @outs: function to print
+ * struct specs_id - structs
+ * @spec: custom type group
+ * @outs: print
  */
 typedef struct specs_id
 {
@@ -12,11 +12,10 @@ int (*outs)(va_list);
 } specs_id;
 
 /**
- * out_specs - prints special characters
- * @nt: character after the %
- * @args: argument for the spec
- * Return: the number of characters printed
- * (excluding the null byte used to end output to strings)
+ * out_specs - function to identify specs crt to func
+ * @args: variadic args
+ * @nt: id
+ * Return: output
  */
 
 int out_specs(char nt, va_list args)

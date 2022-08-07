@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * print_hex - prints a hexadecimal in lower case
- * @args: list that contains hexadecimal to print
- * Return: number of digits printed
+ * specs_h - outputs lower case
+ * @args: variadic args
+ * Return: output
  */
 
 int specs_h(va_list args)
@@ -12,9 +12,9 @@ int specs_h(va_list args)
 }
 
 /**
- * print_HEX - prints a hexadecimal in upper case
- * @args: list that contains hexadecimal to print
- * Return: number of digits printed
+ * specs_H - prints a hexadecimal in upper case
+ * @args: variadic args
+ * Return: output
  */
 
 int specs_H(va_list args)
@@ -24,9 +24,9 @@ int specs_H(va_list args)
 
 
 /**
- * print_oct - prints number in octal base.
- * @args: list containing octal number to be printed
- * Return: number of octals printed
+ * specs_o - outputs octal.
+ * @args: variadic args
+ * Return: output
  */
 
 int specs_o(va_list args)
@@ -64,10 +64,10 @@ int specs_o(va_list args)
 }
 
 /**
- * specs_u_h - prints unsigned int to hexadecimal.
+ * specs_u_h - output unsigned
  * @count: number to print
  * @s: letter `a` on the case to print it (upper or lower)
- * Return: number or char printed
+ * Return: output
  */
 int specs_u_h(unsigned int count, char s)
 {
@@ -96,9 +96,9 @@ int specs_u_h(unsigned int count, char s)
 
 
 /**
- * print_STR - prints a string with a `S` (upper case) specificer
- * @args: argument
- * Return: number of character printed
+ * specs_S - ouput upper case string
+ * @args: variadic args
+ * Return: output
  */
 
 int specs_S(va_list args)

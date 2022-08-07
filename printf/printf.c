@@ -2,14 +2,10 @@
 
 
 /**
- * _printf - mimic printf from stdio
- * Description: produces output according to a format
- * write output to stdout, the standard output stream
- * @format: character string composed of zero or more directives
- *
- * Return: the number of characters printed
- * (excluding the null byte used to end output to strings)
- * return -1 for incomplete identifier error
+ * _printf function for printing outputs
+ * Description: prints output
+ * @format: string argument
+ * Return: output
  */
 
 int _printf(const char *format, ...)
