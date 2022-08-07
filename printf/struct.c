@@ -1,46 +1,45 @@
 #include "main.h"
 
 /**
- * struct identifierStruct - structure definition of a printTypeStruct
- * @indentifier: type
- * @printer: function to print
+ * struct specs_id - structure definition of a printTypeStruct
+ * @spec: type
+ * @outs: function to print
  */
-typedef struct identifierStruct
+typedef struct specs_id
 {
-char *indentifier;
-int (*printer)(va_list);
-} identifierStruct;
+char *spec;
+int (*outs)(va_list);
+} specs_id;
 
 /**
- * printIdentifiers - prints special characters
- * @next: character after the %
- * @arg: argument for the indentifier
+ * out_specs - prints special characters
+ * @nt: character after the %
+ * @args: argument for the spec
  * Return: the number of characters printed
  * (excluding the null byte used to end output to strings)
  */
 
-int printIdentifiers(char next, va_list arg)
+int out_specs(char nt, va_list args)
 {
-	int functsIndex;
+	int index;
 
-	identifierStruct functs[] = {
-		{"c", print_char},
-		{"s", print_str},
-        {"d", print_int},
-		{"i", print_int},
-        {"u", print_unsigned},
-        {"o", print_oct},
-		{"x", print_hex},
-		{"X", print_HEX},
-        {"S", print_STR},
+	specs_id cmp[] = {
+		{"c", specs_c},
+		{"s", specs_s},
+        {"d", specs_d},
+		{"i", specs_d},
+        {"u", specs_u},
+        {"o", specs_o},
+		{"x", specs_h},
+		{"X", specs_H},
+        {"S", specs_S},
 		{NULL, NULL}
 	};
 
-	for (functsIndex = 0; functs[functsIndex].indentifier != NULL; functsIndex++)
+	for (index = 0; cmp[index].spec != NULL; index++)
 	{
-		if (functs[functsIndex].indentifier[0] == next)
-			return (functs[functsIndex].printer(arg));
+		if (cmp[index].spec[0] == nt)
+			return (cmp[index].outs(args));
 	}
 	return (0);
 }
-

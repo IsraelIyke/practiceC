@@ -2,98 +2,129 @@
 
 /**
  * print_hex - prints a hexadecimal in lower case
- * @arg: list that contains hexadecimal to print
+ * @args: list that contains hexadecimal to print
  * Return: number of digits printed
  */
 
-int print_hex(va_list arg)
+int specs_h(va_list args)
 {
-	return (print_hex_base(arg, 'a'));
+	return (specs_hex(args, 'a'));
 }
 
 /**
  * print_HEX - prints a hexadecimal in upper case
- * @arg: list that contains hexadecimal to print
+ * @args: list that contains hexadecimal to print
  * Return: number of digits printed
  */
 
-int print_HEX(va_list arg)
+int specs_H(va_list args)
 {
-	return (print_hex_base(arg, 'A'));
+	return (specs_hex(args, 'A'));
 }
 
 
 /**
  * print_oct - prints number in octal base.
- * @arg: list containing octal number to be printed
+ * @args: list containing octal number to be printed
  * Return: number of octals printed
  */
 
-int print_oct(va_list arg)
+int specs_o(va_list args)
 {
-	unsigned int num = va_arg(arg, unsigned int);
-	unsigned int copy;
-	char *octa;
-	int i, j, charPrinted = 0;
+	unsigned int count = va_arg(args, unsigned int);
+	unsigned int cp;
+	char *o;
+	int k, j, c_out = 0;
 
-	if (num == 0)
+	if (count == 0)
 		return (_putchar('0'));
-	for (copy = num; copy != 0; j++)
+	for (cp = count; cp != 0; j++)
 	{
-		copy = copy / 8;
+		cp = cp / 8;
 	}
-	octa = malloc(j);
-	if (!octa)
+	o = malloc(j);
+	if (!o)
 		return (-1);
 
-	for (i = j - 1; i >= 0; i--)
+	for (k = j - 1; k >= 0; k--)
 	{
-		octa[i] = num % 8 + '0';
-		num = num / 8;
+		o[k] = count % 8 + '0';
+		count = count / 8;
 	}
 
-	for (i = 0; i < j && octa[i] == '0'; i++)
+	for (k = 0; k < j && o[k] == '0'; k++)
 		;
-	for (; i < j; i++)
+	for (; k < j; k++)
 	{
-		_putchar(octa[i]);
-		charPrinted++;
+		_putchar(o[k]);
+		c_out++;
 	}
-	free(octa);
-	return (charPrinted);
+	free(o);
+	return (c_out);
+}
+
+/**
+ * specs_u_h - prints unsigned int to hexadecimal.
+ * @count: number to print
+ * @s: letter `a` on the case to print it (upper or lower)
+ * Return: number or char printed
+ */
+int specs_u_h(unsigned int count, char s)
+{
+	unsigned int counts;
+	int i, j, r, n = 0;
+	char *num;
+
+	for (counts = count; counts != 0; n++, counts /= 16)
+	;
+
+	num = malloc(n);
+	for (i = 0; count != 0; i++)
+	{
+		r = count % 16;
+		if (r < 10)
+			num[i] = r + '0';
+		else
+			num[i] = r - 10 + s;
+		count = count / 16;
+	}
+	for (j = i - 1; j >= 0; j--)
+		_putchar(num[j]);
+	free(num);
+	return (n);
 }
 
 
 /**
  * print_STR - prints a string with a `S` (upper case) specificer
- * @arg: argument
+ * @args: argument
  * Return: number of character printed
  */
 
-int print_STR(va_list arg)
+int specs_S(va_list args)
 {
-int i;
-char *str = va_arg(arg, char*);
+int k;
+char *s = va_arg(args, char*);
 
-if (str == NULL)
-	str = "(null)";
-else if (*str == '\0')
+if (s == NULL)
+	s = "(null)";
+else if (*s == '\0')
 	return (-1);
 
-for (i = 0; str[i]; i++)
+for (k = 0; s[k]; k++)
 {
-	if ((str[i] < 32 && str[i] > 0) || str[i] >= 127)
+	if ((s[k] < 32 && s[k] > 0) || s[k] >= 127)
 	{
 		_putchar('\\');
 		_putchar('x');
-		if (i < 16)
+		if (k < 16)
 			_putchar('0');
 
-		print_unsignedIntToHex(str[i], 'A');
+		specs_u_h(s[k], 'A');
 	}
 	else
-		_putchar(str[i]);
+		_putchar(s[k]);
 }
 
-return (i);
+return (k);
 }

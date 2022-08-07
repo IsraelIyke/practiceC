@@ -14,44 +14,44 @@
 
 int _printf(const char *format, ...)
 {
-	unsigned int i;
-	int identifierPrinted = 0, charPrinted = 0;
-	va_list arg;
+	unsigned int k;
+	int out = 0, c_out = 0;
+	va_list args;
 
-	va_start(arg, format);
+	va_start(args, format);
 	if (format == NULL)
 		return (-1);
 
-	for (i = 0; format[i] != '\0'; i++)
+	for (k = 0; format[k] != '\0'; k++)
 	{
-		if (format[i] != '%')
+		if (format[k] != '%')
 		{
-			_putchar(format[i]);
-			charPrinted++;
+			_putchar(format[k]);
+			c_out++;
 			continue;
 		}
-		if (format[i + 1] == '%')
+		if (format[k + 1] == '%')
 		{
 			_putchar('%');
-			charPrinted++;
-			i++;
+			c_out++;
+			k++;
 			continue;
 		}
-		if (format[i + 1] == '\0')
+		if (format[k + 1] == '\0')
 			return (-1);
 
-		identifierPrinted = printIdentifiers(format[i + 1], arg);
-		if (identifierPrinted == -1 || identifierPrinted != 0)
-			i++;
-		if (identifierPrinted > 0)
-			charPrinted += identifierPrinted;
+		out = out_specs(format[k + 1], args);
+		if (out == -1 || out != 0)
+			k++;
+		if (out > 0)
+			c_out += out;
 
-		if (identifierPrinted == 0)
+		if (out == 0)
 		{
 			_putchar('%');
-			charPrinted++;
+			c_out++;
 		}
 	}
-	va_end(arg);
-	return (charPrinted);
+	va_end(args);
+	return (c_out);
 }

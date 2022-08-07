@@ -6,16 +6,17 @@
 #include <stdio.h>
 
 int _putchar(char c);
-int printIdentifiers(char next, va_list arg);
-int _printf(const char *format, ...);
-int print_char(va_list arg);
-int print_str(va_list arg);
-int print_int(va_list arg);
-int print_unsigned(va_list arg);
-int print_oct(va_list arg);
-int print_hex_base(va_list arg, char _case);
-int print_hex(va_list arg);
-int print_HEX(va_list arg);
-int print_STR(va_list arg);
+int out_specs(char next, va_list args);
+int _printf(const char *format, ...); 
+int specs_c(va_list args);
+int specs_s(va_list args);
+int specs_d(va_list args);
+int specs_u(va_list args);
+int specs_o(va_list args);
+int specs_hex(va_list args, char s);
+int specs_h(va_list args);
+int specs_H(va_list args);
+int specs_S(va_list args);
+int specs_u_h(unsigned int count, char s);
 
 #endif
